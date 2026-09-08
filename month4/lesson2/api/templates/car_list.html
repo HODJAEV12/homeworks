@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Список книг — ListView{% endblock %}
+
+{% block content %}
+    <h1>Список машин (ListView)</h1>
+
+    {% if cars %}
+        {% for car in cars %}
+            <div class="card">
+                <div class="card-meta">
+                    Бренд: <strong>{{ car.brand }}</strong> 
+                    Цвет: <strong>{{ car.color }}</strong> | 
+                    Пробег: <strong>{{ car.mileage }} км</strong> |
+                    Тип передачи: <strong>{{ car.transmission_type }}</strong> |
+                    Тип топлива: <strong>{{ car.fuel_type }}</strong> |
+                    Тип машины: <strong>{{ car.car_type }}</strong> |
+                    Описание машины: <strong>{{ car.car_description }}</strong> |
+                    Состояние: <strong>{{ car.state }}</strong> |
+                    Год выхода: <strong>{{ car.year }}</strong> |
+                </div>
+                
+                <h2 class="card-title">{{ car.brand }}</h2>
+                
+                {% if car.car_description %}
+                    <p class="card-desc">{{ car.car_description|truncatewords:25 }}</p>
+                {% endif %}
+                
+                <p style="color: #16a34a; font-weight: 700; margin: 10px 0 15px 0;">
+                    💰 Цена: {{ car.price }} $
+                </p>
+
+                <a href="{% url 'car_detail' car.pk %}" class="btn">
+                    Подробнее о машине (ID: {{ car.pk }}) &rarr;
+                </a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Машин пока нет. Добавьте их через админку: <a href="/admin/">/admin/</a></p>
+    {% endif %}
+{% endblock %}
