@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p style="font-family: JetBrains Mono; font-size: 40px;">
+    Список студентов:
+    </p>
+
+    {% if students %}
+        {% for student in students %}
+        <div style="font-family: JetBrains Mono; font-size: 20px;">
+            Имя: <strong>{{ student.name }}</strong>
+            Возраст: <strong>{{ student.age }}</strong>
+            Город: <strong>{{ student.city }}</strong>
+        </div>
+        {% endfor %}
+
+    {% else %}
+        <p style="font-family: JetBrains Mono; font-size: 25px;">
+        Студентов пока нет
+        </p>
+    
+    {% endif %}
+</body>
+</html>
