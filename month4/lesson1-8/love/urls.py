@@ -6,6 +6,7 @@ from apps.nurai.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name="index-page")
+    path('', index, name="index-page"),
+    path('about/', about, name="about-page")
 ]
 urlpatterns += static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
