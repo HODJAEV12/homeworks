@@ -1,0 +1,197 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Номера — Aurora Hotel</title>
+  <meta name="description" content="Номера Aurora Hotel: стандарт, делюкс и люкс. Цены, площадь, удобства и фотографии.">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+  <!-- ШАПКА -->
+  {% include 'header.html' %}
+
+  <!-- ОБЛОЖКА СТРАНИЦЫ -->
+  <section class="page-hero">
+    <img src="{% static 'images/gallery1.jpg' %}" alt="Интерьер номера с панорамными окнами" class="hero-bg">
+    <div class="wrap">
+      <span class="eyebrow">Размещение</span>
+      <h1>Номера и цены</h1>
+      <p>Шесть категорий на любой формат поездки — от командировки до семейного отпуска.</p>
+    </div>
+  </section>
+
+  <!-- СПИСОК НОМЕРОВ С ФИЛЬТРОМ -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Каталог</span>
+        <h2>Выберите категорию</h2>
+        <p>Во всех номерах: кондиционер, Wi-Fi, сейф, мини-бар, халаты и ежедневная уборка.</p>
+      </div>
+
+      <!-- кнопки фильтра обрабатываются в js/main.js -->
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">Все</button>
+        <button class="filter-btn" data-filter="standard">Стандарт</button>
+        <button class="filter-btn" data-filter="deluxe">Делюкс</button>
+        <button class="filter-btn" data-filter="suite">Люкс</button>
+      </div>
+
+      <div class="rooms-grid">
+        <article class="room-card" data-type="standard">
+          <div class="room-media" data-lightbox>
+            <span class="badge">Хит</span>
+            <img src="{% static 'images/room-standard.jpg' %}" alt="Стандартный номер с двуспальной кроватью">
+          </div>
+          <div class="room-body">
+            <h3>Standard Double</h3>
+            <p>Компактный номер с двуспальной кроватью, рабочим столом и видом на сад.</p>
+            <div class="room-meta">
+              <span class="tag">2 гостя</span><span class="tag">24 м²</span><span class="tag">Душ</span><span class="tag">Завтрак</span>
+            </div>
+            <div class="room-foot">
+              <div class="price"><b>12 000 ₸</b> <span>/ ночь</span></div>
+              <a href="contact.html" class="btn btn-ghost">Забронировать</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="room-card" data-type="standard">
+          <div class="room-media" data-lightbox>
+            <img src="{% static 'images/gallery2.jpg' %}" alt="Светлый номер с деревянным полом">
+          </div>
+          <div class="room-body">
+            <h3>Standard Twin</h3>
+            <p>Две раздельные кровати, просторная терраса и утреннее солнце в окнах.</p>
+            <div class="room-meta">
+              <span class="tag">2 гостя</span><span class="tag">26 м²</span><span class="tag">Терраса</span>
+            </div>
+            <div class="room-foot">
+              <div class="price"><b>13 500 ₸</b> <span>/ ночь</span></div>
+              <a href="contact.html" class="btn btn-ghost">Забронировать</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="room-card" data-type="deluxe">
+          <div class="room-media" data-lightbox>
+            <img src="{% static 'images/room-deluxe.jpg' %}" alt="Номер делюкс с выходом в сад">
+          </div>
+          <div class="room-body">
+            <h3>Garden Deluxe</h3>
+            <p>King-size кровать, зона отдыха и собственный выход в сад отеля.</p>
+            <div class="room-meta">
+              <span class="tag">3 гостя</span><span class="tag">34 м²</span><span class="tag">Сад</span><span class="tag">Ванна</span>
+            </div>
+            <div class="room-foot">
+              <div class="price"><b>19 500 ₸</b> <span>/ ночь</span></div>
+              <a href="contact.html" class="btn btn-ghost">Забронировать</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="room-card" data-type="deluxe">
+          <div class="room-media" data-lightbox>
+            <img src="{% static 'images/room-suite.jpg' %}" alt="Делюкс с видом на бассейн">
+          </div>
+          <div class="room-body">
+            <h3>Pool Deluxe</h3>
+            <p>Окна выходят на бассейн, увеличенная ванная комната и кофемашина.</p>
+            <div class="room-meta">
+              <span class="tag">3 гостя</span><span class="tag">36 м²</span><span class="tag">Вид на бассейн</span>
+            </div>
+            <div class="room-foot">
+              <div class="price"><b>22 000 ₸</b> <span>/ ночь</span></div>
+              <a href="contact.html" class="btn btn-ghost">Забронировать</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="room-card" data-type="suite">
+          <div class="room-media" data-lightbox>
+            <span class="badge">Люкс</span>
+            <img src="{% static 'images/gallery1.jpg' %}" alt="Люкс с гостиной и панорамными окнами">
+          </div>
+          <div class="room-body">
+            <h3>Panorama Suite</h3>
+            <p>Спальня и гостиная, панорамные окна во всю стену, вид на побережье.</p>
+            <div class="room-meta">
+              <span class="tag">4 гостя</span><span class="tag">52 м²</span><span class="tag">2 комнаты</span><span class="tag">Вид на море</span>
+            </div>
+            <div class="room-foot">
+              <div class="price"><b>31 000 ₸</b> <span>/ ночь</span></div>
+              <a href="contact.html" class="btn btn-ghost">Забронировать</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="room-card" data-type="suite">
+          <div class="room-media" data-lightbox>
+            <img src="{% static 'images/terrace.jpg' %} alt="Терраса люкса с шезлонгами">
+          </div>
+          <div class="room-body">
+            <h3>Terrace Suite</h3>
+            <p>Личная терраса с шезлонгами, мини-кухня и поздний выезд в подарок.</p>
+            <div class="room-meta">
+              <span class="tag">4 гостя</span><span class="tag">60 м²</span><span class="tag">Терраса</span><span class="tag">Late check-out</span>
+            </div>
+            <div class="room-foot">
+              <div class="price"><b>38 000 ₸</b> <span>/ ночь</span></div>
+              <a href="contact.html" class="btn btn-ghost">Забронировать</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <p class="rooms-empty" style="display:none; color:var(--gray); margin-top:24px;">
+        В этой категории пока нет свободных номеров.
+      </p>
+    </div>
+  </section>
+
+  <!-- УСЛУГИ -->
+  <section class="section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Включено</span>
+        <h2>Что входит в проживание</h2>
+      </div>
+      <div class="features">
+        <article class="feature">
+          <span class="num">01</span>
+          <h3>Завтрак</h3>
+          <p>Шведский стол с 7:00 до 11:00, детское меню и кофе навынос.</p>
+        </article>
+        <article class="feature">
+          <span class="num">02</span>
+          <h3>Бассейн и пляж</h3>
+          <p>Шезлонги, зонты и полотенца без дополнительной оплаты.</p>
+        </article>
+        <article class="feature">
+          <span class="num">03</span>
+          <h3>Спа-зона</h3>
+          <p>Сауна и хаммам по записи, массаж — за отдельную плату.</p>
+        </article>
+        <article class="feature">
+          <span class="num">04</span>
+          <h3>Парковка</h3>
+          <p>Охраняемая стоянка и трансфер от аэропорта по запросу.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПОДВАЛ -->
+  {% include 'footer.html' %}
+
+  <div class="lightbox">
+    <button class="lightbox-close" aria-label="Закрыть">&times;</button>
+    <img src="" alt="">
+  </div>
+
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

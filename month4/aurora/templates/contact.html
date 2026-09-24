@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты и бронирование — Aurora Hotel</title>
+  <meta name="description" content="Забронируйте номер в Aurora Hotel: форма бронирования, телефон, адрес и ответы на частые вопросы.">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+  <!-- ШАПКА -->
+  {% include 'header.html ' %}
+
+  <!-- ОБЛОЖКА СТРАНИЦЫ -->
+  <section class="page-hero">
+    <img src="{% static 'images/pool.jpg' %}" alt="Бассейн отеля вечером" class="hero-bg">
+    <div class="wrap">
+      <span class="eyebrow">Бронирование</span>
+      <h1>Свяжитесь с нами</h1>
+      <p>Ответим в течение 15 минут с 8:00 до 23:00, ресепшн работает круглосуточно.</p>
+    </div>
+  </section>
+
+  <!-- ФОРМА + КОНТАКТЫ -->
+  <section>
+    <div class="wrap">
+
+      <div class="section">
+        <span class="eyebrow">Заявка</span>
+        <h2>Забронировать номер</h2>
+        <p style="color:var(--gray); margin:14px 0 30px;">
+          Заполните форму — менеджер подтвердит бронь и пришлёт счёт. Отмена бесплатная за 48 часов до заезда.
+        </p>
+
+        <!-- Проверка полей выполняется в js/main.js -->
+        <form id="booking-form">
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Имя и фамилия</label>
+              <input type="text" id="name" name="name" placeholder="Айгерим Сериккызы">
+              <span class="error"></span>
+            </div>
+
+            <div class="field">
+              <label for="phone">Телефон</label>
+              <input type="tel" id="phone" name="phone" placeholder="+7 700 000-00-00">
+              <span class="error"></span>
+            </div>
+
+            <div class="field">
+              <label for="email">Электронная почта</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com">
+              <span class="error"></span>
+            </div>
+
+            <div class="field">
+              <label for="checkin">Дата заезда</label>
+              <input type="date" id="checkin" name="checkin">
+              <span class="error"></span>
+            </div>
+
+            <div class="field">
+              <label for="checkout">Дата выезда</label>
+              <input type="date" id="checkout" name="checkout">
+              <span class="error"></span>
+            </div>
+
+            <div class="field">
+              <label for="room">Категория номера</label>
+              <select id="room" name="room">
+                <option value="standard">Standard — 12 000 ₸</option>
+                <option value="deluxe">Deluxe — 19 500 ₸</option>
+                <option value="suite">Suite — 31 000 ₸</option>
+              </select>
+              <span class="error"></span>
+            </div>
+
+            <div class="field">
+              <label for="guests">Гостей</label>
+              <select id="guests" name="guests">
+                <option>1</option><option selected>2</option><option>3</option><option>4</option>
+              </select>
+              <span class="error"></span>
+            </div>
+
+            <div class="field">
+              <label for="comment">Пожелания</label>
+              <textarea id="comment" name="comment" placeholder="Ранний заезд, детская кроватка, трансфер…"></textarea>
+            </div>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-top:22px;">
+            <button type="submit" class="btn btn-primary">Отправить заявку</button>
+            <span class="form-note">Нажимая кнопку, вы соглашаетесь с обработкой данных.</span>
+          </div>
+
+          <p class="form-msg"></p>
+        </form>
+      </div>
+
+      <aside class="section">
+        <span class="eyebrow">Контакты</span>
+        <h2 style="font-size:1.6rem;">Aurora Hotel</h2>
+        <ul class="contact-list" style="margin-top:20px;">
+          <li><span>Адрес</span>ул. Приморская, 12, Актау</li>
+          <li><span>Телефон</span><a href="tel:+77001234567">+7 700 123-45-67</a></li>
+          <li><span>Почта</span><a href="mailto:stay@aurora-hotel.kz">stay@aurora-hotel.kz</a></li>
+          <li><span>Ресепшн</span>Круглосуточно, без выходных</li>
+          <li><span>Заезд / выезд</span>с 14:00 / до 12:00</li>
+        </ul>
+        <img src="{% static 'images/terrace.jpg' %}" alt="Терраса отеля с видом на горы" style="margin-top:26px; border-radius:var(--radius);">
+      </aside>
+
+    </div>
+  </section>
+
+  <!-- ЧАСТЫЕ ВОПРОСЫ -->
+  <section class="section-alt">
+    <div class="wrap" style="max-width:820px;">
+      <div class="section">
+        <span class="eyebrow">FAQ</span>
+        <h2>Частые вопросы</h2>
+      </div>
+
+      <div class="section">
+        <div class="acc-item">
+          <button class="acc-btn">Можно ли заселиться раньше 14:00?</button>
+          <div class="acc-panel"><p>Да, если номер свободен. Напишите в комментарии к брони — мы подтвердим ранний заезд накануне, дополнительной платы нет.</p></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-btn">Принимаете ли вы гостей с животными?</button>
+          <div class="acc-panel"><p>Мы принимаем питомцев до 8 кг в номерах категории Standard и Deluxe. Уборка — 3 000 ₸ за проживание.</p></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-btn">Как отменить бронирование?</button>
+          <div class="acc-panel"><p>Бесплатная отмена — за 48 часов до заезда. Позже удерживается стоимость первой ночи. Достаточно ответить на письмо с подтверждением.</p></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-btn">Есть ли трансфер от аэропорта?</button>
+          <div class="acc-panel"><p>Да, легковой автомобиль — 6 000 ₸ в одну сторону, минивэн — 9 000 ₸. Укажите номер рейса в пожеланиях.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПОДВАЛ -->
+  {% include 'footer.html' %}
+
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

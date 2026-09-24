@@ -1,0 +1,17 @@
+{% load static %}
+<header class="header">
+<div class="wrap header-inner">
+    <a href="{% url 'index-page' %}" class="logo">{{ settings.site_name }}</a>
+
+    <button class="burger" aria-label="Меню" aria-expanded="false">
+    <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav">
+    <a href="{% url 'index-page' %}" class="active">Главная</a>
+    <a href="{% url 'rooms-page' %}">Номера</a>
+    <a href="{% url 'contact-page' %}">Контакты</a>
+    <a href="{% url 'contact-page' %}" class="btn btn-primary">Забронировать</a>
+    </nav>
+</div>
+</header>

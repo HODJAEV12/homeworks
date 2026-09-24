@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aurora Hotel — бутик-отель у моря</title>
+  <meta name="description" content="Aurora Hotel — минималистичный бутик-отель: 48 номеров, спа, ресторан и панорамный бассейн.">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <!-- ШАПКА -->
+  {% include 'header.html' %}
+  <!-- ПЕРВЫЙ ЭКРАН -->
+  <section class="hero">
+    <img src="{{ banner.image.url }}" alt="Бассейн и терраса отеля на закате" class="hero-bg">
+    <div class="wrap">
+      <div class="hero-content">
+        <span class="eyebrow">{{ banner.title }}</span>
+        <h1>{{ banner.sub_title }}</h1>
+        <p>{{ banner.description }}</p>
+        <div class="hero-actions">
+          <a href="{% url 'contact-page' %}" class="btn btn-primary">Забронировать номер</a>
+          <a href="{% url 'rooms-page' %}" class="btn btn-light">Смотреть номера</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ПРЕИМУЩЕСТВА -->
+  <section>
+    <div class="wrap">
+      <div class="features">
+        
+        {% for i in advantages %}
+        <article class="feature">
+          <span class="num">{{ i.id }}</span>
+          <h3>{{ i.title }}</h3>
+          <p>{{ i.sub_title }}</p>
+        </article>
+        {% endfor %}
+
+      </div>
+    </div>
+  </section>
+
+  <!-- О ОТЕЛЕ -->
+  <section class="section-alt">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Об отеле</span>
+        <h2>{{ hotel.title }}</h2>
+        <p style="color:var(--gray); margin-top:16px;">{{ hotel.sub_title }}</p>
+        <div class="stats">
+          <div class="stat"><b>{{ hotel.rooms_count }}</b><span>номеров</span></div>
+          <div class="stat"><b>{{ hotel.rating }}</b><span>рейтинг гостей</span></div>
+          <div class="stat"><b>{{ hotel.works_age }}</b><span>лет работы</span></div>
+        </div>
+      </div>
+      <div class="split-img">
+        <img src="{{ hotel.image.url }}" alt="Внутренний двор отеля с бассейном и пальмами">
+      </div>
+    </div>
+  </section>
+
+  <!-- НОМЕРА (превью) -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Размещение</span>
+        <h2>Три категории номеров</h2>
+        <p>От компактного стандарта до люкса с террасой. Во всех номерах — кондиционер, Wi-Fi, сейф и мини-бар.</p>
+      </div>
+
+      <div class="rooms-grid">
+
+        {% for i in rooms %}
+        <article class="room-card">
+          <div class="room-media">
+            <span class="badge">Хит</span>
+            <img src="{{ i.image.url }}" alt="">
+          </div>
+          <div class="room-body">
+            <h3>{{ i.room_class }}</h3>
+            <p>{{ i.description }}</p>
+            <div class="room-meta">
+              <span class="tag">{{ i.guests_count }}</span>
+              <span class="tag">{{ i.square }}</span>
+              <span class="tag">{{ i.advantage }}</span>
+            </div>
+            <div class="room-foot">
+              <div class="price"><b>{{ i.price }} сом</b> <span>/ ночь</span></div>
+              <a href="{% url 'rooms-page' %}" class="btn btn-ghost">Подробнее</a>
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ГАЛЕРЕЯ -->
+  <section class="section-alt">
+    <div class="wrap">
+
+      <div class="section-head">
+        <span class="eyebrow">Галерея</span>
+        <h2>Как у нас</h2>
+        <p>Нажмите на фотографию, чтобы открыть её крупно.</p>
+      </div>
+
+      
+      <div class="gallery">
+        <figure data-lightbox><img style="border-radius: 25px;" src="{% static 'images/gallery2.jpg' %}"></figure>
+        <figure data-lightbox><img style="border-radius: 25px;" src="{% static 'images/restaurant.jpg' %}" alt="Подача блюда в ресторане отеля"></figure>
+        <figure data-lightbox><img style="border-radius: 25px;" src="{% static 'images/terrace.jpg' %}" alt="Шезлонги на террасе с видом на горы"></figure>
+        <figure data-lightbox><img style="border-radius: 25px;" src="{% static 'images/gallery3.jpg' %}" alt="Бассейн и деревянный настил у моря"></figure>
+        <figure data-lightbox><img style="border-radius: 25px;" src="{% static 'images/spa.jpg' %}" alt="Спа-принадлежности: полотенце, свеча и цветы"></figure>
+        <figure data-lightbox><img style="border-radius: 25px;" src="{% static 'images/gallery1.jpg' %}" alt="Просторный номер с панорамными окнами"></figure>
+      </div>
+     
+
+    </div>
+  </section>
+
+  <!-- ПРИЗЫВ К ДЕЙСТВИЮ -->
+  <section class="cta">
+    <img src="{% static 'images/gallery2.jpg' %}" alt="" class="hero-bg">
+    <div class="wrap">
+      <span class="eyebrow" style="color:#fff;">Раннее бронирование</span>
+      <h2>−15% при заезде до 1 декабря</h2>
+      <p>Забронируйте напрямую на сайте: скидка применяется автоматически, отмена бесплатная за 48 часов.</p>
+      <a href="{% url 'contact-page' %}" class="btn btn-light">Забронировать</a>
+    </div>
+  </section>
+
+  <!-- ПОДВАЛ -->
+  {% include 'footer.html' %}
+
+  <!-- ЛАЙТБОКС -->
+  <div class="lightbox">
+    <button class="lightbox-close" aria-label="Закрыть">&times;</button>
+    <img src="" alt="">
+  </div>
+
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
