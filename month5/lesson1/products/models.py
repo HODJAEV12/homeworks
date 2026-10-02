@@ -2,7 +2,7 @@ from django.db import models
 
 class Products(models.Model):
     title = models.CharField(max_length=100, verbose_name="Название продукта")
-    description = models.TextField(verbose_name="Описание продукта")
+    description = models.TextField(verbose_name="Описание продукта", blank=True, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Цена продукта")
     quantity = models.PositiveIntegerField(verbose_name="Количество продукта", default=0)
     is_available = models.BooleanField(default=True, verbose_name="Доступность продукта")
