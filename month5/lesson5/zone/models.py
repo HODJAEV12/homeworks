@@ -13,13 +13,6 @@ class Zone(AbstractBaseModel):
     coordinates = models.CharField(max_length=255, verbose_name='координаты')
     description = models.TextField(verbose_name='описание')
 
-    class Meta:
-        verbose_name = 'зона'
-        verbose_name_plural = 'зоны'
-
-    def __str__(self):
-        return self.name
-
 class Visitors(AbstractBaseModel):
     zone = models.ForeignKey(
         Zone,
@@ -30,10 +23,3 @@ class Visitors(AbstractBaseModel):
     full_name = models.CharField(max_length=255, verbose_name='ФИО')
     info = models.TextField(verbose_name='информация о посетителе')
     is_allowed = models.BooleanField(default=False, verbose_name='разрешен ли вход')
-
-    class Meta:
-        verbose_name = 'посетитель зоны'
-        verbose_name_plural = 'посетители зоны'
-
-    def __str__(self):
-        return self.full_name
